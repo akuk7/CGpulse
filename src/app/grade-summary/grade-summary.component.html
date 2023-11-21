@@ -1,0 +1,14 @@
+<table>
+    <thead>
+      <tr>
+        <th>Course</th>
+        <th>Grade</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of courseData">
+        <td>{{ data.courseName }}</td>
+        <td>{{ data.grade }}</td>
+      </tr>
+    </tbody>
+  </table>

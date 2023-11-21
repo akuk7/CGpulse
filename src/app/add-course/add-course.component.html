@@ -1,0 +1,18 @@
+<div class="add-course">
+<label for="course"  >Course: </label>
+<input id="course" type="text" [formControl]="name">
+<label for="grade">Grade:</label>
+<select id="grade" [formControl]="grade" name="selectedGrade">
+  <option [ngValue]="10">S</option>
+  <option [ngValue]="9">A</option>
+  <option [ngValue]="8">B</option>
+  <option [ngValue]="7">C</option>
+  <option [ngValue]="6">D</option>
+  <option [ngValue]="4">E</option>
+  <option [ngValue]="0">U</option>
+</select>
+<label for="credit">Credits:</label>
+
+<input id="credit" type="text" [formControl]="credit">
+<button type="button" (click)="onSubmit()">Submit</button>
+</div>

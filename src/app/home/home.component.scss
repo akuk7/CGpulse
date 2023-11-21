@@ -1,0 +1,24 @@
+.home-page {
+  background-color: black;
+  min-height: 100vh;
+  padding-top: 100px;
+  color: white;
+  
+
+  .title-home {
+    color: rgb(0, 255, 255);
+    font-size: 40px;
+    margin:0px 40px ;
+    
+
+  }
+  .tagline-home{
+    font-size: 70px;
+    
+    margin: 0px 40px;
+    font-weight: 500;
+  }
+  button{
+    display: none;
+  }
+}
