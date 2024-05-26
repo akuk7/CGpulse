@@ -3,6 +3,7 @@ import { HomeComponent } from './home/home.component';
 import { AddCourseComponent } from './add-course/add-course.component';
 import { Router, Routes } from '@angular/router';
 import { RouterModule } from '@angular/router';
+// import { NgChartsModule } from 'ng2-charts';
 
 // const appRoutes:Routes=[
 //   {path:'',component:HomeComponent},

@@ -11,12 +11,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { GradeSummaryComponent } from './grade-summary/grade-summary.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PieChartComponent } from './ui-elements/pie-chart/pie-chart.component';
-
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { LineChartComponent } from './ui-elements/line-chart/line-chart.component';
+import { NgChartsModule } from 'ng2-charts';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'add-course', component: AddCourseComponent },
   { path: 'grade-summary', component: GradeSummaryComponent },
-  {path:'pie',component:PieChartComponent}
+  {path:'pie',component:PieChartComponent},
+  {path:'line',component:LineChartComponent}
 ];
 @NgModule({
   declarations: [
@@ -25,6 +28,8 @@ const routes: Routes = [
     AddCourseComponent,
     GradeSummaryComponent,
     PieChartComponent,
+    NavbarComponent,
+    LineChartComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,6 +37,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    NgChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,11 +1,121 @@
-.add-course{
+.add-course-popup {
+  position: absolute;
+  width: 600px;
+  top: 100px;
+  left: calc(50% - 300px);
+//   background-color: rgba(100, 255, 255, 0.3);
+background-color: black;
+  border-radius: 20px;
+  display: flex;
+  .add-course-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    .add-course-heading{
+        color: white;
+    }
+    .add-course-video {
+        margin-top: 50px;
+      height: 200px;
+      width: 200px;
+      border-radius: 100px;
+    }
+  }
+  .add-course {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-label{
-    width: 100px;
-    font-size: 20px;
-    color: rgb(255, 102, 0)
-}
+    align-items: left;
+    padding: 30px;
+
+    
+    padding: 30px;
+    .label {
+      width: 200px;
+      font-size: 13px;
+      font-weight: 900;
+      color: rgb(0, 255, 255);
+      margin-top: 7px;
+      margin-bottom: 2px;
+      &.half{
+        margin-top: 0px;
+      }
+      &.half-select{
+        margin-top: 2px;
+      }
+
+    }
+    .input {
+      height: 20px;
+      padding: 5px;
+      width: 200px;
+      border-radius: 5px;
+      &.half{
+        width: 100%;
+        // &.text{
+        //     width: 75px;
+        // }
+      }
+    }
+    .select {
+        width: 215px;
+      height: 32px;
+      padding: 5px;
+      border-radius: 5px;
+      &.half{
+        width: 100%;
+      }
+    }
+    .two-input{
+        margin-top: 7px;
+        display: flex;
+        justify-content: space-between;
+        
+        .half-wrapper{
+            width: 90px;
+        .input {
+            height: 20px;
+            padding: 5px;
+            width: 200px;
+            border-radius: 5px;
+            &.half{
+              width: 85%;
+              // &.text{
+              //     width: 75px;
+              // }
+            }
+          }
+          .select {
+            width: 215px;
+          height: 32px;
+          padding: 5px;
+          border-radius: 5px;
+          &.half{
+            width: 100%;
+          }
+        }
+        .label {
+            width: 200px;
+            font-size: 13px;
+            font-weight: 900;
+            color: rgb(0, 255, 255);
+            margin-top: 10px;
+            margin-bottom: 2px;
+            &.half{
+              margin-top: 0px;
+            }
+            &.half-select{
+              margin-top: 2px;
+            }
+      
+          }
+        }
+    }
+    .submit-button{
+        width: 100px;
+        margin-top: 50px;
+        align-self: center;
+    }
+  }
 }

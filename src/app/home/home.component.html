@@ -1,8 +1,17 @@
 <div class="home-page">
-    
+  <app-navbar />
   <div class="title-home">CG Pulse</div>
-  <div class="tagline-home">Precision and Personalization, Shaping Your Academic Triumph</div>
-  <button routerLink="add-course">Add Course</button>
-  <button routerLink="grade-summary">Grade summary</button>
-  <!-- <app-pie-chart></app-pie-chart> -->
+  <div class="tagline-home">
+    Precision and Personalization, Shaping Your Academic Triumph
+  </div>
+  <div *ngIf="showAddCourse">
+    <app-add-course />
+  </div>
+ 
+  <!-- <app-pie-chart></app-pie-chart>
+   -->
+   <!-- <app-pie-chart
+   [chartData]="{ labels: ['Label1', 'Label2', 'Label3'], data: [200, 150, 300], backgroundColor: ['purple', 'cyan', 'magenta'] }">
+ </app-pie-chart> -->
+
 </div>
