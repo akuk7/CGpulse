@@ -29,9 +29,7 @@ export class LineChartComponent implements OnChanges {
   };
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.courseData) {
-      this.updateChart();
-    }
+   console.log("change")
   }
 
   updateChart(): void {

@@ -1,42 +1,51 @@
-import { Component } from '@angular/core';
-import { PieChartComponent } from '../ui-elements/pie-chart/pie-chart.component';
+import { Component, OnInit } from '@angular/core';
+import { GradeService } from '../grade.service'; // Adjust the path as necessary
+
 @Component({
   selector: 'app-grade-summary',
   templateUrl: './grade-summary.component.html',
   styleUrls: ['./grade-summary.component.scss'],
 })
-export class GradeSummaryComponent {
+export class GradeSummaryComponent implements OnInit {
   courseData: any[] = [];
+  pieChartData: { ChartData: number[], ChartLabels: string[], BackgroundColors: string[] } = { ChartData: [], ChartLabels: [], BackgroundColors: [] };
 
-  constructor() {}
+  constructor(private gradeService: GradeService) {}
 
   ngOnInit(): void {
     this.refreshCourseData();
   }
 
   deleteCourseById(id: number): void {
-    const index = this.courseData.findIndex((course) => course.id === id);
-
-    if (index !== -1) {
-      this.courseData.splice(index, 1);
-
-      this.saveToLocalStorage(this.courseData);
-    }
+    this.gradeService.deleteCourse(id).subscribe(
+      () => {
+        this.courseData = this.courseData.filter(course => course.id !== id);
+        this.refreshChartData();
+        console.log(id)
+       
+      },
+      (error:any) => {
+        console.error('Error deleting course:', error);
+      }
+    );
   }
 
   private refreshCourseData(): void {
-    const storedData = localStorage.getItem('courseData');
-    this.courseData = storedData ? JSON.parse(storedData) : [];
+    this.gradeService.getCourses().subscribe(
+      (data: any[]) => {
+        this.courseData = data;
+        this.refreshChartData();
+      },
+      (error:any) => {
+        console.error('Error fetching courses:', error);
+      }
+    );
   }
 
-  private saveToLocalStorage(data: any[]): void {
-    localStorage.setItem('courseData', JSON.stringify(data));
-  }
-  getCreditByType() {
-    const courseData = JSON.parse(localStorage.getItem('courseData') || '[]');
+  private refreshChartData(): void {
     const creditTotalsByType: { [key: string]: number } = {};
 
-    courseData.forEach((course: any) => {
+    this.courseData.forEach((course: any) => {
       const type = course.type;
       const credit = parseInt(course.credit, 10);
 
@@ -49,17 +58,11 @@ export class GradeSummaryComponent {
 
     const ChartData = Object.values(creditTotalsByType);
     const ChartLabels = Object.keys(creditTotalsByType);
-
-    // Generate background colors dynamically
     const BackgroundColors = this.generateRandomColors(ChartData.length);
 
-    return { ChartData, ChartLabels, BackgroundColors };
+    this.pieChartData = { ChartData, ChartLabels, BackgroundColors };
   }
 
-  // Property to store chart data
-  pieChartData: { ChartData: number[], ChartLabels: string[], BackgroundColors: string[] } = this.getCreditByType();
-
-  // Function to generate random background colors
   private generateRandomColors(count: number): string[] {
     const colors: string[] = [];
     for (let i = 0; i < count; i++) {

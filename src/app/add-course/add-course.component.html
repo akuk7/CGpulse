@@ -1,76 +1,35 @@
 <div class="add-course-popup">
   <div class="add-course-left">
     <div class="add-course-heading">Add your grade:</div>
-    <video
-      class="add-course-video"
-      playsinline="true"
-      webkit-playsinline="true"
-      [src]="videoSource"
-      type="video/mp4"
-      autoplay
-    >
-    
-    </video>
+    <video class="add-course-video" playsinline webkit-playsinline [src]="videoPlayer" type="video/mp4" autoplay></video>
   </div>
-  <div class="add-course">
-    <label for="course" class="label">Course: </label>
-    <input id="course" type="text" [formControl]="name" class="input" />
+  <form [formGroup]="courseForm" class="add-course">
+    <label for="course" class="label">Course:</label>
+    <input id="course" type="text" formControlName="course" class="input" />
+
     <div class="two-input">
       <div class="half-wrapper">
         <label for="grade" class="label half-select">Grade:</label>
-        <select
-          id="grade"
-          [formControl]="grade"
-          name="selectedGrade"
-          class="select half"
-          (click)="onGradeChange()"
-        >
-          <option [ngValue]="'10'" class="option">S</option>
-          <option [ngValue]="'9'" class="option">A</option>
-          <option [ngValue]="'8'" class="option">B</option>
-          <option [ngValue]="'7'" class="option">C</option>
-          <option [ngValue]="'6'" class="option">D</option>
-          <option [ngValue]="'4'" class="option">E</option>
-          <option [ngValue]="'0'" class="option">U</option>
+        <select id="grade" formControlName="grade" name="selectedGrade" class="select half" (change)="onGradeChange()">
+          <option *ngFor="let grade of grades" [ngValue]="grade.value" class="option">{{ grade.label }}</option>
         </select>
       </div>
       <div class="half-wrapper">
         <label for="credit" class="label half">Credits:</label>
-        <input
-          id="credit"
-          type="text"
-          [formControl]="credit"
-          class="input half"
-        />
+        <input id="credit" type="text" formControlName="credit" class="input half" />
       </div>
     </div>
+
     <label for="type" class="label">Type:</label>
-    <select id="type" [formControl]="type" name="selectedType" class="select">
-      <option [ngValue]="'Science'" class="option">Science</option>
-      <option [ngValue]="'Engineering'" class="option">Engineering</option>
-      <option [ngValue]="'Humanities'" class="option">Humanities</option>
-      <option [ngValue]="'Professional'" class="option">Professional</option>
-      <option [ngValue]="'Others'" class="option">Others</option>
+    <select id="type" formControlName="type" name="selectedType" class="select">
+      <option *ngFor="let type of types" [ngValue]="type.value" class="option">{{ type.label }}</option>
     </select>
+
     <label for="semester" class="label">Semester:</label>
-    <select
-      id="semester"
-      [formControl]="semester"
-      name="selectedSemester"
-      class="select"
-    >
-      <option [ngValue]="'1'" class="option">1</option>
-      <option [ngValue]="'2'" class="option">2</option>
-      <option [ngValue]="'3'" class="option">3</option>
-      <option [ngValue]="'4'" class="option">4</option>
-      <option [ngValue]="'5'" class="option">5</option>
-      <option [ngValue]="'6'" class="option">6</option>
-      <option [ngValue]="'7'" class="option">7</option>
-      <option [ngValue]="'8'" class="option">8</option>
-      <option [ngValue]="'9'" class="option">9</option>
-      <option [ngValue]="'10'" class="option">10</option>
+    <select id="semester" formControlName="semester" name="selectedSemester" class="select">
+      <option *ngFor="let semester of semesters" [ngValue]="semester.value" class="option">{{ semester.label }}</option>
     </select>
-   
+
     <button type="button" (click)="onSubmit()" class="submit-button">Submit</button>
-  </div>
+  </form>
 </div>

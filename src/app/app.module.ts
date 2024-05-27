@@ -14,6 +14,7 @@ import { PieChartComponent } from './ui-elements/pie-chart/pie-chart.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LineChartComponent } from './ui-elements/line-chart/line-chart.component';
 import { NgChartsModule } from 'ng2-charts';
+import { HttpClientModule } from '@angular/common/http';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'add-course', component: AddCourseComponent },
@@ -38,6 +39,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     BrowserAnimationsModule,
     NgChartsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
